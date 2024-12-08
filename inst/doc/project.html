@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Zukun li" />
+
+<meta name="date" content="2024-12-08" />
+
+<title>final project</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">final project</h1>
+<h4 class="author">Zukun li</h4>
+<h4 class="date">2024-12-08</h4>
+
+
+
+<div id="implemented-univariate-linear-regression-using-rcpp" class="section level2">
+<h2>Implemented univariate linear regression using rcpp</h2>
+<p><span class="math display">\[
+y=\beta_{1}x+\beta_{0}+z\\
+z\sim N(0.\sigma^{2})\\
+\hat{\beta_{1}}=\frac{\sum (x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum
+(x_{i}-\bar{x})^{2}}\\
+\hat{\beta_{0}}=\bar{y}-\hat{\beta_{1}}\bar{x}
+\]</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(Rcpp)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(SA24204180)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">runif</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">10</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>z<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>y<span class="ot">=</span><span class="dv">2</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">1</span><span class="sc">+</span>z</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="at">rcpp_versiom =</span> <span class="fu">lrC</span>(x, y),</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  <span class="at">r_version =</span> <span class="fu">lm</span>(y <span class="sc">~</span> x),</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">10</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="fu">print</span>(results)</span></code></pre></div>
+<pre><code>## Unit: microseconds
+##          expr   min    lq   mean median    uq   max neval cld
+##  rcpp_versiom   8.9   9.4  42.36   10.3  20.5 295.7    10  a 
+##     r_version 384.9 391.4 439.82  397.4 403.8 792.9    10   b</code></pre>
+</div>
+<div id="kernel-density-estimation-using-r" class="section level2">
+<h2>Kernel Density Estimation using R</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">1000</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a> tmp <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> weights)</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a> <span class="cf">if</span> (tmp <span class="sc">==</span> <span class="dv">1</span>){</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a> data[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> means[<span class="dv">1</span>], <span class="at">sd =</span> sigma[<span class="dv">1</span>])</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a> } <span class="cf">else</span> {</span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a> data[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> means[<span class="dv">2</span>], <span class="at">sd =</span> sigma[<span class="dv">2</span>])</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a> }</span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>}</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>x_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(data), <span class="fu">max</span>(data), <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a>density_estimate <span class="ot">&lt;-</span> <span class="fu">kde</span>(data, h, x_grid)</span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">breaks =</span> <span class="dv">50</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(x_grid, density_estimate, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Kernel Density Estimation&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Data Value&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+Package: SA24204180
+Type: Package
+Title: Final project
+Version: 0.1.0
+Data: 2024-12-08
+Author: Zukun Li
+Maintainer: Zukun Li <3529276037@qq.com>
+Description:  homeworks and final project. 
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown, 
+    DAAG,
+    Rcpp,
+    boot,
+    bootstrap,
+    fastmatch,
+    lpSolve,
+    microbenchmark
+VignetteBuilder: knitr
+Imports: stats
+LinkingTo: Rcpp
+RoxygenNote: 7.3.2
+URL: http://github.com/TULING1/SA24204180
+BugReports: http://github.com/TULING1/SA24204180/issues
